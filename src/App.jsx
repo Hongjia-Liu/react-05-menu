@@ -4,6 +4,11 @@ import Categories from "./Categories";
 import Menu from "./Menu";
 
 function App() {
+	const filterItems = category => {
+		const newItems = items.filter(item => item.category === category);
+		setMenuItems(newItems);
+	};
+
 	const [menuItems, setMenuItems] = useState(items);
 	const [categories, setCategories] = useState([]);
 	return (
@@ -13,7 +18,7 @@ function App() {
 					<h2>our menu</h2>
 					<div className="underline"></div>
 				</div>
-				<Categories />
+				<Categories filterItems={filterItems} />
 				<Menu items={menuItems} />
 			</section>
 		</main>
